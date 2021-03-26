@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Button.module.css';
+import styles from './Button.css';
 
 const Button = ({ style, action, label, disabled }) => (
     <div className={style}>

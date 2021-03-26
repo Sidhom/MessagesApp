@@ -6,6 +6,8 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
+var Message = require("../models/message");
+
 router.post('/signup', (req, res) => {
     if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName) {
       res.json({success: false, msg: 'Please fill in all the required fields.'});
@@ -49,6 +51,25 @@ router.post('/signup', (req, res) => {
         });
       }
     });
+  });
+
+  router.post('/add-message', (req, res) => {
+    if (!req.body.message || !req.body.private) {
+      res.json({success: false, msg: 'Please fill in all the required fields.'});
+    } else {
+      var newMessage = new Message({
+        message: req.body.message,
+        private: req.body.private
+      });
+      // save the message
+      newMessage.save((err) => {
+        if (err) {
+          return res.json({success: false, msg: 'Failed to add message.'});
+        }
+
+        res.json({success: true, message: newMessage  ,msg: 'Successful added new message.'});
+      });
+    }
   });
 
   module.exports = router;

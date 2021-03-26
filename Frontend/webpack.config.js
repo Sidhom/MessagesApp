@@ -10,13 +10,15 @@ module.exports = {
         filename: 'bundle.js',
       },
     module: {
+      
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: "babel-loader"
-                }
+                },
+
             },
             {
                 test: /\.html$/,
@@ -25,6 +27,19 @@ module.exports = {
                         loader: "html-loader"
                     }
                 ]
+            },
+            {
+              test: /\.css$/,
+              use: [
+                'style-loader',
+                {
+                  loader: 'css-loader',
+                  options: {
+                    importLoaders: 1,
+                    modules: true
+                  }
+                }
+              ]
             }
         ]
     },

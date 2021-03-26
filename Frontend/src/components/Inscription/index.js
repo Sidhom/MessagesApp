@@ -3,7 +3,7 @@ import useFormInput from '../../hooks/useFormInput';
 import useInscription from '../../hooks/useInscription';
 import Button from '../Button';
 import Input from '../Input';
-import styles from './Inscription.module.css';
+import styles from './Inscription.css';
  
 const Inscription = () => {
 
@@ -19,7 +19,7 @@ const Inscription = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Sign up to FACE DETECTION</h1>
+      <h1 className={styles.title}>Sign up to Leboncoin messanger</h1>
       <div className={styles.inputContainer}>
        <div className={styles.label}> FirstName  </div>
        <div className={styles.input} >

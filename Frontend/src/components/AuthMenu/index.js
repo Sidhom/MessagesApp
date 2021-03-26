@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import useLogout from '../../hooks/useLogout';
 import { loggedInUser } from '../../store/state';
-import styles from './AuthMenu.module.css';
+import styles from './AuthMenu.css';
 
 
 const AuthMenu = () =>{

@@ -3,7 +3,7 @@ import useFormInput from '../../hooks/useFormInput';
 import useLogin from '../../hooks/useLogin';
 import Button from '../Button';
 import Input from '../Input';
-import styles from './Login.module.css';
+import styles from './Login.css';
  
 const Login = () => {
   const email = useFormInput('');
@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Sign in to FACE DETECTION</h1>
+      <h1 className={styles.title}>Sign in to Leboncoin messanger</h1>
       <div className={styles.inputContainer}>
        <div className={`${styles.email} ${styles.label}`}> Email  </div>
        <div className={styles.input}>
