@@ -8,6 +8,7 @@ import { userState } from '../store/selectors';
 
 const Routes = () => {
     const connectedUser = useRecoilValue(userState);
+    console.log('connectedUser',connectedUser)
     return (
      
             <Switch>

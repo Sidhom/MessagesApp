@@ -1,14 +1,18 @@
 import React, { useRef } from "react";
+import { useRecoilValue } from 'recoil';
 import useAddMessage from "../../hooks/useAddMessage";
 import useFormInput from '../../hooks/useFormInput';
 import Button from "../Button";
+import { loggedInUser } from '../../store/state';
 import style from './AddMessage.css';
 
 const AddMessage = () => {
     const messageRef = useRef();
     const privacyRef = useRef();
     const {value, onChange} = useFormInput('');
-    const {   send, error, message, loading, allFieldsAreValid } = useAddMessage({ messageRef,  message: value,privacyRef, privacy: false });
+    const connectedUser = useRecoilValue(loggedInUser);
+
+    const { send, error, message, loading, allFieldsAreValid } = useAddMessage({ messageRef,  message: value,privacyRef, destinationId: null, senderId: connectedUser._id });
     return (
         <form>
            <textarea name="message" value={message}

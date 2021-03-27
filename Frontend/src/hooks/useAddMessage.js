@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import useFormValidation from './useFormValidation';
 
-const useAddMessage = ({ messageRef, message, privacyRef, privacy}) => {
+const useAddMessage = ({ messageRef, message, privacyRef, destinationId, senderId}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { allFieldsAreValid } = useFormValidation({ inputRefs: [messageRef, privacyRef], inputValues : [message, privacy] });
+  const { allFieldsAreValid } = useFormValidation({ inputRefs: [messageRef, privacyRef], inputValues : [message, destinationId] });
   
  const url = 'http://localhost:3000/api/add-message';
 // request options
 const options = {
     method: 'POST',
-    body: `message=${message}&private=${privacy}`,
+    body: `message=${message}&destinationId=${destinationId}&senderId=${senderId}`,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
@@ -21,10 +21,8 @@ const options = {
       response.json()).then(response => {
           setLoading(false);
           if(response.success) {
-            //setMessageValue(response.message);
             setError(null);
           } else {
-            //setMessageValue(null);
             setError(response.msg);
           }
       });

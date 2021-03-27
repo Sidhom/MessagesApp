@@ -6,8 +6,12 @@ var MessageSchema = new Schema({
         type: String,
         required: true
     },
-    private: {
-        type: Boolean,
+    destinationId: {
+        type: String,
+        required: false
+    },
+    senderId: {
+        type: String,
         required: true
     },
 });

@@ -1,0 +1,10 @@
+.message {
+    padding-left: 1rem;
+}
+.sender {
+    font-weight: 600;
+}
+.container {
+    display: flex;
+    padding-left: 35rem;
+}

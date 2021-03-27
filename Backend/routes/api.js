@@ -1,4 +1,3 @@
-var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('../config/database');
 require('../config/passport')(passport);
@@ -7,6 +6,22 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
 var Message = require("../models/message");
+
+const { MongoClient } = require("mongodb");
+const uri ="mongodb://localhost/messages-app";
+const client = new MongoClient(uri);
+async function findMessages() {
+  let messagesList;
+  try {
+    await client.connect();
+   const database = client.db("messages-app");
+   const messages = database.collection("messages");
+    messagesList = await Message.find();
+ } finally {
+  await client.close();
+ }
+ return messagesList;
+}
 
 router.post('/signup', (req, res) => {
     if (!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName) {
@@ -54,12 +69,13 @@ router.post('/signup', (req, res) => {
   });
 
   router.post('/add-message', (req, res) => {
-    if (!req.body.message || !req.body.private) {
+    if (!req.body.message || !req.body.senderId) {
       res.json({success: false, msg: 'Please fill in all the required fields.'});
     } else {
       var newMessage = new Message({
         message: req.body.message,
-        private: req.body.private
+        destinationId: req.body.destinationId,
+        senderId: req.body.senderId
       });
       // save the message
       newMessage.save((err) => {
@@ -67,9 +83,34 @@ router.post('/signup', (req, res) => {
           return res.json({success: false, msg: 'Failed to add message.'});
         }
 
-        res.json({success: true, message: newMessage  ,msg: 'Successful added new message.'});
+        res.json({success: true, message: newMessage ,msg: 'Successful added new message.'});
       });
     }
   });
+  router.get('/find-users',(req, res) => {
+    User.find(
+    {}, (err, users) => {
+      if (err) throw err;
+  
+      if (!users) {
+        res.status(404).send({success: false, msg: 'No users found...'});
+      } else {
+        res.status(200).send({success: true, users})
+      }
+    });
+  });
+  router.get('/find-messages',(req, res) => {
+    Message.find(
+    {}, (err, messages) => {
+      if (err) throw err;
+  
+      if (!messages) {
+        res.status(404).send({success: false, msg: 'No new messages...'});
+      } else {
+        res.status(200).send({success: true, messages})
+      }
+    });
+  });
+
 
   module.exports = router;
