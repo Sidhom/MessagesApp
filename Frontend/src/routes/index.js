@@ -8,13 +8,12 @@ import { userState } from '../store/selectors';
 
 const Routes = () => {
     const connectedUser = useRecoilValue(userState);
-    console.log('connectedUser',connectedUser)
     return (
      
             <Switch>
                {!connectedUser &&  <Route path="/Inscription" component={Inscription} />}
                 {!connectedUser && <Route path="/" component={Login} />}
-                {connectedUser &&  <Route path="/DiscussionForum" component={DiscussionForum} />}
+                {connectedUser &&  <Route path="/" component={DiscussionForum} />}
             </Switch>
     )
 }

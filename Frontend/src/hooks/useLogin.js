@@ -29,7 +29,7 @@ const options = {
             setLoggedUser(response.user);
             setError(null);
             localStorage.setItem('user', JSON.stringify(response.user));
-            history.push("/DiscussionForum");
+            history.push("/");
           } else {
             setLoggedUser(null);
             setError(response.msg);

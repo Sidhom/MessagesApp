@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import useFormValidation from './useFormValidation';
 
 const useAddMessage = ({ messageRef, message, privacyRef, destinationId, senderId}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { allFieldsAreValid } = useFormValidation({ inputRefs: [messageRef, privacyRef], inputValues : [message, destinationId] });
+
   
  const url = 'http://localhost:3000/api/add-message';
 // request options
@@ -15,9 +14,9 @@ const options = {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 }
-  const send = () => {
+async const sendMessage = () => {
       setLoading(true);
-      fetch(url ,options).then(response => 
+    await  fetch(url ,options).then(response => 
       response.json()).then(response => {
           setLoading(false);
           if(response.success) {
@@ -26,14 +25,11 @@ const options = {
             setError(response.msg);
           }
       });
-     return !!message;
   };
   return {
-    send,
+    sendMessage,
     error,
-    message,
     loading,
-    allFieldsAreValid
   }
 }
 export default useAddMessage;

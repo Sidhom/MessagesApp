@@ -1,10 +1,32 @@
 .message {
+    grid-area: message;
+    text-align: start;
     padding-left: 1rem;
+    overflow-wrap: break-word;
 }
 .sender {
+    grid-area: sender;
     font-weight: 600;
-}
-.container {
     display: flex;
-    padding-left: 35rem;
+    justify-content: flex-end;
+}
+.privateContainer,
+.publicContainer  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 160px;
+}
+.messageContainer {
+    display: grid;
+    width: auto;
+    grid-auto-columns: 7rem;
+    grid-template:  "sender message message message" 
+                    "sender message message message" 26px;
+}
+.globalContainer {
+    display: grid;
+    width: 100%;
+    grid-template: "privateContainer publicContainer"; 
 }

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { loggedInUser } from '../store/state';
 
 const useMessagesList = ({  }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [messages, setMessages] = useState(false);
+  const [publicMessages, setPublicMessages] = useState([]);
+  const [privateMessages, setPrivateMessages]= useState([]);
   const [users, setUsers] = useState(false);
-    
+  const connectedUser = useRecoilValue(loggedInUser);
  const url = 'http://localhost:3000/api/find-messages';
  const usersUrl = 'http://localhost:3000/api/find-users';
 // request options
@@ -17,17 +20,17 @@ const options = {
       setLoading(true);
       fetch(url ,options).then(response =>
       response.json()).then(response => {
-        console.log(response);
           setLoading(false);
           if(response.success) {
-            setMessages(response.messages);
+            let messages = response.messages;
+            setPublicMessages(messages && messages.filter(message => message.destinationId === 'null'));
+            setPrivateMessages(messages && messages.filter(message => (message.destinationId === connectedUser._id) || (message.senderId === connectedUser._id)))
             setError(null);
           } else {
-            setMessages([]);
+            setPublicMessages([]);
             setError(response.msg);
           }
       });
-     return !!messages;
   };
   const getUsers = () => {
     setLoading(true);
@@ -45,7 +48,7 @@ const options = {
    return !!setUsers;
 };
 const findUser = (message) => {
-return users.find(user => user._id === message.senderId);
+return users && users.find(user => user._id === message.senderId);
 }
 useEffect(()=> {
   getUsers();
@@ -56,8 +59,10 @@ useEffect(()=> {
     findUser,
     users,
     error,
-    messages,
-    loading
+    publicMessages,
+    privateMessages,
+    loading,
+    connectedUser
   }
 }
 export default useMessagesList;
