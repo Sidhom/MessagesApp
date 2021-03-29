@@ -8,7 +8,8 @@ const useFormInput = initialValue => {
   }
   return {
     value,
-    onChange: handleChange
+    onChange: handleChange,
+    setValue
   }
 }
 export default useFormInput;

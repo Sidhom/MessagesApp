@@ -24,7 +24,7 @@ const options = {
           if(response.success) {
             let messages = response.messages;
             setPublicMessages(messages && messages.filter(message => message.destinationId === 'null'));
-            setPrivateMessages(messages && messages.filter(message => (message.destinationId === connectedUser._id) || (message.senderId === connectedUser._id)))
+            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null')))
             setError(null);
           } else {
             setPublicMessages([]);
@@ -62,7 +62,9 @@ useEffect(()=> {
     publicMessages,
     privateMessages,
     loading,
-    connectedUser
+    connectedUser,
+    setPublicMessages,
+    setPrivateMessages
   }
 }
 export default useMessagesList;

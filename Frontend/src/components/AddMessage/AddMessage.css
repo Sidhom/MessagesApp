@@ -1,7 +1,34 @@
 .messageContainer {
- width: 20rem;
+ width: 22rem;
  height: 5rem;
 }
 .sendMessage {
     padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.toggleButton {
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.public {
+    padding-right: 10px;
+}
+.private {
+    padding-left: 10px;
+}
+.searchUserInput {
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+.spaceLeft {
+    padding-left: 15rem;
+}
+.checkMark {
+    height: 50px;
+    width: 50px;
 }

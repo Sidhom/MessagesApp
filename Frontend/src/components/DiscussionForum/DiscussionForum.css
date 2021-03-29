@@ -1,8 +1,5 @@
 .addMessageContainer {
     grid-area: addMessageContainer;
-    width: 300px;
-    display: flex;
-    justify-content: center;
 }
 .messagesList {
     grid-area: messagesList;
