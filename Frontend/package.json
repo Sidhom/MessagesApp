@@ -2,9 +2,17 @@
   "name": "messages-app",
   "version": "1.0.0",
   "description": "",
+  "jest": {
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  
+  },
   "main": "/src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack --mode development",
     "start": "webpack serve --open",
     "build": "webpack",
@@ -22,9 +30,10 @@
   },
   "homepage": "https://github.com/Sidhom/MessagesApp#readme",
   "devDependencies": {
-    "@babel/core": "^7.13.10",
+    "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
-    "@babel/preset-react": "^7.12.13",
+    "@babel/preset-react": "^7.13.13",
+    "@testing-library/react": "^11.2.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
@@ -37,6 +46,11 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "@babel/cli": "^7.13.14",
+    "@testing-library/jest-dom": "^5.11.10",
+    "babel-jest": "^26.6.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.6.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0"

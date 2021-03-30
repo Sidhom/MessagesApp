@@ -7,7 +7,7 @@ import styles from './App.css';
 
 const App = () => (
     <Router>
-       <div className={styles.app}>
+       <div role='container' className={styles.app}>
          <RecoilRoot>
           <Router>
           <Header />
