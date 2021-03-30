@@ -22,6 +22,7 @@ for frontend:
 7) if the destinator is found a checkMark will be displayed next to the input field
 8) once you filled in the message and the destinator with a greencheck appearing you can press on send or press enter to send the private message
 9) private and public messages are displayed in two seperate lists
+10) you can logout of the application with the logout present in the header.
 
 
 
