@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import useFormInput from './useFormInput';
 
-const useAddMessage = ({ messageRef, message, privacyRef, destinationId, senderId, setValue, setPublicMessages ,setPrivateMessages, publicMessages, privateMessages}) => {
+const useAddMessage = ({ message, destinationId, senderId, setvalue, setPublicMessages ,setPrivateMessages, publicMessages, privateMessages}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [privateMsg, setPrivateMsg] = useState(false);
@@ -16,14 +15,12 @@ const options = {
     }
 } 
 const sendMessage = () => {
-  console.log('')
       setLoading(true);
      fetch(url ,options).then(response => 
       response.json()).then(response => {
           setLoading(false);
           if(response.success) {
-            setValue('');
-            console.log('options', options)
+            setvalue('');
            if(Boolean(destinationId)) setPrivateMessages([...privateMessages, response.message]);
           if(Boolean(!destinationId))  setPublicMessages([...publicMessages, response.message]);
             setError(null);

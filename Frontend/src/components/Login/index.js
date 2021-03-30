@@ -18,18 +18,21 @@ const Login = () => {
       <div className={styles.inputContainer}>
        <div className={`${styles.email} ${styles.label}`}> Email  </div>
        <div className={styles.input}>
-        <Input ref={emailRef} type="email" values={email} autoComplete="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required={true} />
+        <Input ref={emailRef} type="email" values={email} autoComplete="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required={true}
+         />
         </div>
       </div>
       <div style={{ marginTop: 10 }}>
       <div className={styles.inputContainer}>
       <div className={styles.label}>  Password </div>
             <div className={styles.input}>
-                <Input ref={passwordRef} type="password" values={password} autoComplete="new-password"  required={true} />
+                <Input ref={passwordRef} type="password" values={password} autoComplete="new-password"  required={true} 
+                      action={login}
+                />
             </div>
       </div>
       </div>
-      {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
+      {error && <><small  className={styles.error}>{error}</small><br /></>}<br />
       <Button label={loading ? 'Loading...' : 'Login'} action={login} disabled={loading || !allFieldsAreValid} />
     </div>
   );

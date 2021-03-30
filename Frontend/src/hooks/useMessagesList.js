@@ -23,8 +23,8 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            setPublicMessages(messages && messages.filter(message => message.destinationId === 'null'));
-            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null')))
+            setPublicMessages(messages && messages.filter(message => message.destinationId === 'null' || message.destinationId === ''));
+            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.senderId || connectedUser._id === message.destinationId)))
             setError(null);
           } else {
             setPublicMessages([]);
