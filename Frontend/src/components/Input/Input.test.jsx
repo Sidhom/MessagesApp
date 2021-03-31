@@ -3,18 +3,19 @@ import React from 'react'
 // import react-testing methods
 import { render, fireEvent, cleanup, screen } from '@testing-library/react'
 // the component to test
-import ToggleButton from '.';
+import Input from './';
 
-describe('ToggleButton component', () => {
+describe('Input component', () => {
 
   beforeAll(() => {
-    render(<ToggleButton />)
+    render(<Input />)
   })
 
   it('should have the default value', () => {
-    const input = screen.getByRole('switchButton')
-    expect(input.value).toBe('on')
-    fireEvent.change(input, { target: { value: true } })
+    const input = screen.getByLabelText("generic-input")
+    expect(input.value).toBe('')
+    fireEvent.change(input, { target: { value: 'test' } })
+    expect(input.value).toBe('test');
   })
   afterAll(cleanup)
 })

@@ -4,8 +4,8 @@ import styles from './Header.css';
 
 const Header = () => (
     <header className={styles.header}>
-        <div className={styles.headerContainer}>
-        <h3 className={styles.title}> Leboncoin messanger </h3>
+        <div className={styles.headerContainer} >
+        <h3 className={styles.title} data-testid="title" > Leboncoin messanger </h3>
         <div className={styles.container}>
         <AuthMenu />
         </div>
