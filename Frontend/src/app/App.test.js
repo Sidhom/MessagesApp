@@ -10,11 +10,8 @@ describe('App component', () => {
     })
   
     it('should have the right container in the dom', () => {
-      const container = 'container';
   
-      expect(screen.getByRole('div',container, options = {
-        hidden: true
-      })).toBeInTheDocument()
+      expect(screen.getByRole('container')).toBeInTheDocument()
     })
   
     afterAll(cleanup)

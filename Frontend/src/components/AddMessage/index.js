@@ -8,7 +8,7 @@ import style from './AddMessage.css';
 import ToggleButton from "../ToggleButton";
 import Input from "../Input";
 import useFindUser from "../../hooks/useFindUser";
-import greenCheckMark from '../../public/greenCheckMark.png';
+import GreenCheckMark from '../../public/greenCheckMark.png';
 
 const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, privateMessages, users}) => {
     const messageRef = useRef();
@@ -46,7 +46,7 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
                         <div className={style.searchUserInput}>
                         <Input type="text" values={values} required={true}/>
                        {values.searchedUser && ( <div>
-                        <img src={greenCheckMark} className={style.checkMark}/>
+                        <img src={GreenCheckMark} className={style.checkMark}/>
                         </div>
                        )}
                          </div>

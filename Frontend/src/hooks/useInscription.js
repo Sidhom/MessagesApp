@@ -25,7 +25,7 @@ const options = {
       response.json()).then(response => {
           setLoading(false);
           if(response.success) {
-            setLoggedUser(response);
+            setLoggedUser(response.user);
             setError(null);
             localStorage.setItem('user', JSON.stringify(response.user));
             history.push("/DiscussionForum");

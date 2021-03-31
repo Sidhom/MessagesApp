@@ -4,7 +4,7 @@ import style from './MessageList.css';
 const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUser }) => {
 
 
-    const connectedUserId=connectedUser._id;
+    const connectedUserId= connectedUser && connectedUser._id;
     
     return (
         <div className={style.globalContainer}>
@@ -14,7 +14,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
             {privateMessages && privateMessages.map((message) =>{ 
                     const sender = findUser(message) && findUser(message);
                 return (
-                 Boolean(sender._id === connectedUserId) ? (
+                 Boolean( sender && sender._id === connectedUserId) ? (
                 <div  className={`${style.youMessageContainer}` } key={message._id}>
                     <span className={style.you}>
                         YOU :
@@ -28,7 +28,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                     <div  className={`${style.messageContainer}` } key={message._id}>
                  
                     <span className={style.sender}>
-                        {sender.firstName} :    
+                        {sender && sender.firstName} :    
                     </span> 
                     <span className={style.message}> 
                         {message.message} 
@@ -44,7 +44,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
             {publicMessages && publicMessages.map((message) =>{ 
                 const sender = findUser(message) && findUser(message);
                 return (
-                    Boolean(sender._id === connectedUserId) ? (
+                    Boolean(sender && sender._id === connectedUserId) ? (
                         <div  className={`${style.youMessageContainer}` } key={message._id}>
                             <span className={style.you}>
                                 YOU :
@@ -58,7 +58,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                             <div  className={`${style.messageContainer}` } key={message._id}>
                          
                             <span className={style.sender}>
-                                {sender.firstName} :    
+                                {sender && sender.firstName} :    
                             </span> 
                             <span className={style.message}> 
                                 {message.message} 

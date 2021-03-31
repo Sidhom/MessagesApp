@@ -23,26 +23,26 @@ const Inscription = () => {
       <div className={styles.inputContainer}>
        <div className={styles.label}> FirstName  </div>
        <div className={styles.input} >
-        <Input ref={firstNameRef} type="text" values={firstName} autoComplete="given-name" required={true} />
+        <Input ref={firstNameRef} type="text" values={firstName} autoComplete="given-name" required={true} action={signup} />
         </div>
       </div>
       <div className={styles.inputContainer}>
        <div className={styles.label}> LastName  </div>
        <div className={styles.input}>
-        <Input ref={lastNameRef} type="text" values={lastName} autoComplete="family-name" required={true} />
+        <Input ref={lastNameRef} type="text" values={lastName} autoComplete="family-name" required={true} action={signup} />
         </div>
       </div>
       <div className={styles.inputContainer}>
       <div className={`${styles.email} ${styles.label}`}> Email  </div>
        <div className={styles.input}>
-        <Input ref={emailRef} type="email" values={email} autoComplete="email" required={true} />
+        <Input ref={emailRef} type="email" values={email} autoComplete="email" required={true}  action={signup} />
         </div>
       </div>
       <div style={{ marginTop: 10 }}>
       <div className={styles.inputContainer}>
       <div className={styles.label}>  Password </div>
             <div className={styles.input}>
-                <Input ref={passwordRef} type="password" values={password} autoComplete="new-password" required={true} />
+                <Input ref={passwordRef} type="password" values={password} autoComplete="new-password" required={true} action={signup} />
             </div>
       </div>
       </div>
