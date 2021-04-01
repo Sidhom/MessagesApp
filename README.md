@@ -11,6 +11,7 @@ for frontend:
 6) cd MessagesApp
 7) cd Frontend
 8) npm start 
+9) To launch unit tests with coverage: npm test
 
 #functionnal aspect: 
 1) if you are a new user you need to signup (link in the header of the app)
