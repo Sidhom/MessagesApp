@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">46.15% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/13</span>
+                <span class='fraction'>6/13</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">54.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>6/11</span>
             </div>
         
             
@@ -82,20 +82,20 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -105,20 +105,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useEffect, useState } from 'react';
 &nbsp;
-const useFindUser = <span class="fstat-no" title="function not covered" >(u</span>sers) =&gt; {
-  const [user, setUser] = <span class="cstat-no" title="statement not covered" >useState('');</span>
-  const [searchedUser, setSearchedUser] = <span class="cstat-no" title="statement not covered" >useState('');</span>
+const useFindUser = (users) =&gt; {
+  const [user, setUser] = useState('');
+  const [searchedUser, setSearchedUser] = useState('');
 &nbsp;
-  const handleChange = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
+  const handleChange = <span class="fstat-no" title="function not covered" >e </span>=&gt; {
 <span class="cstat-no" title="statement not covered" >    setUser(e.target.value);</span>
   }
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span>=&gt; {</span>
+  useEffect(<span class="fstat-no" title="function not covered" >()</span>=&gt; {
 <span class="cstat-no" title="statement not covered" >    if(!user) <span class="cstat-no" title="statement not covered" >setSearchedUser('');</span></span>
     const searchedUser = <span class="cstat-no" title="statement not covered" >user  &amp;&amp; users.find(<span class="fstat-no" title="function not covered" >us</span> =&gt;<span class="cstat-no" title="statement not covered" >Boolean(us.firstName.toLowerCase() === user.toLowerCase()))</span>;</span>
 <span class="cstat-no" title="statement not covered" >   setUser(searchedUser &amp;&amp; searchedUser.firstName);</span>
 <span class="cstat-no" title="statement not covered" >   setSearchedUser(searchedUser);</span>
   },[user])
-<span class="cstat-no" title="statement not covered" >  return {</span>
+  return {
     value: user,
     onChange: handleChange,
     setUser,
@@ -133,7 +133,7 @@ export default useFindUser;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Apr 01 2021 10:55:31 GMT+0200 (GMT+02:00)
+                at Thu Apr 01 2021 21:55:35 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

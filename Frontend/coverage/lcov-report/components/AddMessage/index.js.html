@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">38.1% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>8/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">9.09% </span>
+                <span class="strong">72.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,7 +118,8 @@
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
 <a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -130,13 +131,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,7 +148,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,32 +193,33 @@ import Input from "../Input";
 import useFindUser from "../../hooks/useFindUser";
 import GreenCheckMark from '../../public/greenCheckMark.png';
 &nbsp;
-const AddMessage = <span class="fstat-no" title="function not covered" >({</span>setPublicMessages, setPrivateMessages, publicMessages, privateMessages, users}) =&gt; {
-    const messageRef = <span class="cstat-no" title="statement not covered" >useRef();</span>
-    const privacyRef = <span class="cstat-no" title="statement not covered" >useRef();</span>
-    const {value, onChange, setvalue} = <span class="cstat-no" title="statement not covered" >useFormInput('');</span>
-    const connectedUser = <span class="cstat-no" title="statement not covered" >useRecoilValue(loggedInUser);</span>
-    const values = <span class="cstat-no" title="statement not covered" >useFindUser(users);</span>
-    const { sendMessage, action, loading, privateMsg, setPrivateMsg  } = <span class="cstat-no" title="statement not covered" >useAddMessage({ </span>
+const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, privateMessages, users}) =&gt; {
+    const messageRef = useRef();
+    const privacyRef = useRef();
+    const {value, onChange, setvalue} = useFormInput('');
+    const connectedUser = useRecoilValue(loggedInUser);
+    const values = useFindUser(users);
+    const { sendMessage, loading, privateMsg, setPrivateMsg  } = useAddMessage({ 
         messageRef,  
         message: value, 
         privacyRef, 
-        destinationId: values &amp;&amp; values.searchedUser &amp;&amp; values.searchedUser._id, 
-        senderId: connectedUser._id,
+        destinationId: values &amp;&amp; values.searchedUser &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >values.searchedUser._id, </span>
+        senderId:connectedUser &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >connectedUser._id,</span>
         setvalue, 
         setPublicMessages, 
         setPrivateMessages,
         publicMessages,
         privateMessages});
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;form&gt;
            &lt;textarea name="message" value={value}
-                className={style.messageContainer}
-                ref={messageRef}
-                onKeyDown={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; {<span class="cstat-no" title="statement not covered" >event.key === 'Enter'? sendMessage() : undefined </span>}}
-                onChange={onChange}&gt;Enter text here...&lt;/textarea&gt;
-                &lt;div className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}&gt;
-                    &lt;Button label={loading ? 'Loading...' : 'Send'} action={sendMessage} disabled={loading || !value || privateMsg &amp;&amp; !values.searchedUser} /&gt;
+                     role="addMessageContainer"
+                    className={style.messageContainer}
+                    ref={messageRef}
+                    onKeyDown={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; {<span class="cstat-no" title="statement not covered" >event.key === 'Enter'? sendMessage() : undefined </span>}}
+                    onChange={onChange}&gt;Enter text here...&lt;/textarea&gt;
+                &lt;div className={`${style.sendMessage} ${privateMsg ? <span class="branch-0 cbranch-no" title="branch not covered" >style.spaceLeft </span>: ''}`}&gt;
+                    &lt;Button label={loading ? <span class="branch-0 cbranch-no" title="branch not covered" >'Loading...' </span>: 'Send'} action={sendMessage} disabled={loading || !value || <span class="branch-2 cbranch-no" title="branch not covered" >privateMsg </span>&amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >!values.searchedUser}</span> /&gt;
                     &lt;div className={style.toggleButton}&gt;
                         &lt;div className={style.public}&gt;public&lt;/div&gt;
                         &lt;ToggleButton value={privateMsg} onChange={<span class="fstat-no" title="function not covered" >()</span> =&gt; { <span class="cstat-no" title="statement not covered" >privateMsg &amp;&amp;  values.setSearchedUser(null);</span>
@@ -224,7 +227,7 @@ const AddMessage = <span class="fstat-no" title="function not covered" >({</span
                         }}  /&gt;
                         &lt;div className={style.private}&gt;private&lt;/div&gt;
                         {privateMsg &amp;&amp; (
-                        &lt;div className={style.searchUserInput}&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >                        &lt;div className={style.searchUserInput}&gt;</span>
                         &lt;Input type="text" values={values} required={true}/&gt;
                        {values.searchedUser &amp;&amp; ( &lt;div&gt;
                         &lt;img src={GreenCheckMark} className={style.checkMark}/&gt;
@@ -247,7 +250,7 @@ export default AddMessage;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Apr 01 2021 10:55:31 GMT+0200 (GMT+02:00)
+                at Thu Apr 01 2021 21:55:35 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>

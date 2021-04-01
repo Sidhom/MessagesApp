@@ -7,9 +7,9 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
     const connectedUserId= connectedUser && connectedUser._id;
     
     return (
-        <div className={style.globalContainer}>
+        <div className={style.globalContainer} role="messagesListContainer">
             <div>
-            <h2>Private Messages</h2>
+            <h2 data-testid="privateMessages">Private Messages</h2>
             <div className={style.publicContainer}>
             {privateMessages && privateMessages.map((message) =>{ 
                     const sender = findUser(message) && findUser(message);

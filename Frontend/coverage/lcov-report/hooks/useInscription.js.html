@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.55% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/22</span>
+                <span class='fraction'>10/22</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.55% </span>
+                <span class="strong">45.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/22</span>
+                <span class='fraction'>10/22</span>
             </div>
         
             
@@ -109,7 +109,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -118,30 +136,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,22 +155,22 @@ import { useRecoilState } from 'recoil';
 import { loggedInUser } from '../store/state';
 import useFormValidation from './useFormValidation';
 &nbsp;
-const useInscription = <span class="fstat-no" title="function not covered" >({</span> firstNameRef, lastNameRef, emailRef, passwordRef, email, password, firstName, lastName }) =&gt; {
-  const history = <span class="cstat-no" title="statement not covered" >useHistory();</span>
-  const [loggedUser, setLoggedUser] = <span class="cstat-no" title="statement not covered" >useRecoilState(loggedInUser);</span>
-  const [error, setError] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
-  const [loading, setLoading] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const { allFieldsAreValid } = <span class="cstat-no" title="statement not covered" >useFormValidation({ inputRefs: [firstNameRef, lastNameRef, emailRef, passwordRef], inputValues : [firstName, lastName ,email, password] });</span>
-  const url = <span class="cstat-no" title="statement not covered" >'http://localhost:3000/api/signup';</span>
+const useInscription = ({ firstNameRef, lastNameRef, emailRef, passwordRef, email, password, firstName, lastName }) =&gt; {
+  const history = useHistory();
+  const [loggedUser, setLoggedUser] = useRecoilState(loggedInUser);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const { allFieldsAreValid } = useFormValidation({ inputRefs: [firstNameRef, lastNameRef, emailRef, passwordRef], inputValues : [firstName, lastName ,email, password] });
+  const url = 'http://localhost:3000/api/signup';
 // request options
-const options = <span class="cstat-no" title="statement not covered" >{</span>
+const options = {
     method: 'POST',
     body: `email=${email}&amp;password=${password}&amp;firstName=${firstName}&amp;lastName=${lastName}}`,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 }
-  const signup = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+  const signup = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >      setLoading(true);</span>
 <span class="cstat-no" title="statement not covered" >      fetch(url ,options).then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; </span>
 <span class="cstat-no" title="statement not covered" >      response.json())</span>.then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
@@ -187,7 +187,7 @@ const options = <span class="cstat-no" title="statement not covered" >{</span>
       });
 <span class="cstat-no" title="statement not covered" >     return !!loggedUser;</span>
   };
-<span class="cstat-no" title="statement not covered" >  return {</span>
+  return {
     signup,
     loggedUser,
     error,
@@ -202,7 +202,7 @@ export default useInscription ;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Apr 01 2021 10:55:31 GMT+0200 (GMT+02:00)
+                at Thu Apr 01 2021 21:55:35 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

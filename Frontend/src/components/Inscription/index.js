@@ -18,7 +18,7 @@ const Inscription = () => {
   const { signup,  error, loading, allFieldsAreValid} = useInscription({ firstNameRef, lastNameRef, passwordRef, emailRef, email: email.value, password: password.value, firstName: firstName.value, lastName: lastName.value, });
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="inscriptionContainer">
       <h1 className={styles.title}>Sign up to Leboncoin messanger</h1>
       <div className={styles.inputContainer}>
        <div className={styles.label}> FirstName  </div>

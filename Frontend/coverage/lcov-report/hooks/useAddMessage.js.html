@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/20</span>
+                <span class='fraction'>8/20</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>1/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">5.56% </span>
+                <span class="strong">44.44% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/18</span>
+                <span class='fraction'>8/18</span>
             </div>
         
             
@@ -98,36 +98,36 @@
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -137,21 +137,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useState } from 'react';
 &nbsp;
-const useAddMessage = <span class="fstat-no" title="function not covered" >({</span> message, destinationId, senderId, setvalue, setPublicMessages ,setPrivateMessages, publicMessages, privateMessages}) =&gt; {
-  const [error, setError] = <span class="cstat-no" title="statement not covered" >useState(null);</span>
-  const [loading, setLoading] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
-  const [privateMsg, setPrivateMsg] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+const useAddMessage = ({ message, destinationId, senderId, setvalue, setPublicMessages ,setPrivateMessages, publicMessages, privateMessages}) =&gt; {
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [privateMsg, setPrivateMsg] = useState(false);
 &nbsp;
- const url = <span class="cstat-no" title="statement not covered" >'http://localhost:3000/api/add-message';</span>
+ const url = 'http://localhost:3000/api/add-message';
 // request options
-const options = <span class="cstat-no" title="statement not covered" >{</span>
+const options = {
     method: 'POST',
     body: `message=${message}&amp;destinationId=${destinationId}&amp;senderId=${senderId}`,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
 } 
-const sendMessage = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+const sendMessage = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >      setLoading(true);</span>
 <span class="cstat-no" title="statement not covered" >     fetch(url ,options).then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; </span>
 <span class="cstat-no" title="statement not covered" >      response.json())</span>.then(<span class="fstat-no" title="function not covered" >re</span>sponse =&gt; {
@@ -166,7 +166,7 @@ const sendMessage = <span class="cstat-no" title="statement not covered" ><span 
           }
       });
   };
-<span class="cstat-no" title="statement not covered" >  return {</span>
+  return {
     sendMessage,
     error,
     loading,
@@ -181,7 +181,7 @@ export default useAddMessage;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Apr 01 2021 10:55:31 GMT+0200 (GMT+02:00)
+                at Thu Apr 01 2021 21:55:35 GMT+0200 (GMT+02:00)
             </div>
         </div>
         <script src="../prettify.js"></script>

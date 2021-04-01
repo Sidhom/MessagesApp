@@ -8,7 +8,8 @@ const useMessagesList = ({  }) => {
   const [publicMessages, setPublicMessages] = useState([]);
   const [privateMessages, setPrivateMessages]= useState([]);
   const [users, setUsers] = useState(false);
-  const connectedUser = useRecoilValue(loggedInUser);
+ // const connectedUser = useRecoilValue(loggedInUser);
+ const connectedUser = ""
  const url = 'http://localhost:3000/api/find-messages';
  const usersUrl = 'http://localhost:3000/api/find-users';
 // request options
@@ -38,14 +39,13 @@ const options = {
     response.json()).then(response => {
         setLoading(false);
         if(response.success) {
-          setUsers(response.users);
+          //  setUsers(response.users);
           setError(null);
         } else {
-          setUsers([]);
+          //  setUsers([]);
           setError(response.msg);
         }
     });
-   return !!setUsers;
 };
 const findUser = (message) => {
 return users && users.find(user => user._id === message.senderId);
@@ -56,6 +56,8 @@ useEffect(()=> {
 },[])
 
   return {
+    getUsers,
+    getMessages,
     findUser,
     users,
     error,

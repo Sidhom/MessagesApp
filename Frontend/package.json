@@ -4,7 +4,9 @@
   "description": "",
   "jest": {
     "verbose": true,
-    "transform": { "^.+\\.jsx?$": "babel-jest" }
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "main": "/src/index.js",
   "scripts": {

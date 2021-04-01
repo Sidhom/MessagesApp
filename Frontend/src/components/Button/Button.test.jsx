@@ -6,14 +6,19 @@ import { render, fireEvent, cleanup, screen } from '@testing-library/react'
 import Button from './';
 
 describe('Button component', () => {
+  const mockedAction = jest.fn();
 
   beforeAll(() => {
-    render(<Button label="test" />)
+    render(<Button label="test" action={mockedAction} />)
   })
 
   it('should display the button elemnt', () => {
-    const button = screen.getByLabelText("generic-button")
-    // expect(button.children.type).toBe("button")
+    const buttonContainer = screen.getByTestId("generic-button");
+     expect(buttonContainer).toBeInTheDocument();
+     const button = screen.getByTestId("buttonTestId");
+     expect(button.textContent).toBe("test");
+     fireEvent.click(button);
+     expect(mockedAction.mock.calls.length).toEqual(1);
   })
   afterAll(cleanup)
 })

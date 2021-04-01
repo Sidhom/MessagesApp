@@ -7,7 +7,7 @@ import style from './DiscussionForum.css';
 const DiscussionForum = () => {
     const  messagesListProps = useMessagesList({});
     return (
-        <div className={style.container}>
+        <div className={style.container} data-testid="discussionForumContainer">
             <div className={style.messagesList}>
         <MessageList {...messagesListProps} />
         </div>

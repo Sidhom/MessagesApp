@@ -16,12 +16,12 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
     const {value, onChange, setvalue} = useFormInput('');
     const connectedUser = useRecoilValue(loggedInUser);
     const values = useFindUser(users);
-    const { sendMessage, action, loading, privateMsg, setPrivateMsg  } = useAddMessage({ 
+    const { sendMessage, loading, privateMsg, setPrivateMsg  } = useAddMessage({ 
         messageRef,  
         message: value, 
         privacyRef, 
         destinationId: values && values.searchedUser && values.searchedUser._id, 
-        senderId: connectedUser._id,
+        senderId:connectedUser && connectedUser._id,
         setvalue, 
         setPublicMessages, 
         setPrivateMessages,
@@ -30,10 +30,11 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
     return (
         <form>
            <textarea name="message" value={value}
-                className={style.messageContainer}
-                ref={messageRef}
-                onKeyDown={event => {event.key === 'Enter'? sendMessage() : undefined }}
-                onChange={onChange}>Enter text here...</textarea>
+                     role="addMessageContainer"
+                    className={style.messageContainer}
+                    ref={messageRef}
+                    onKeyDown={event => {event.key === 'Enter'? sendMessage() : undefined }}
+                    onChange={onChange}>Enter text here...</textarea>
                 <div className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
                     <Button label={loading ? 'Loading...' : 'Send'} action={sendMessage} disabled={loading || !value || privateMsg && !values.searchedUser} />
                     <div className={style.toggleButton}>

@@ -11,6 +11,7 @@ const customRender = (elements) => render(
     <Routes />
       {elements}
       </Router>
-    </RecoilRoot>);
+    </RecoilRoot>
+    );
 
 export {customRender as render};
