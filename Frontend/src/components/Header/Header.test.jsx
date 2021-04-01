@@ -12,7 +12,7 @@ describe('Header component', () => {
   })
 
   it('should display the header', () => {
-    const title = screen.getByTestId('title')
+    const title = screen.getByLabelText('title')
     expect(title.value).toBe('Leboncoin messanger')
   })
   afterAll(cleanup)

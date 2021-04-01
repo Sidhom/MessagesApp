@@ -10,7 +10,7 @@ const useInscription = ({ firstNameRef, lastNameRef, emailRef, passwordRef, emai
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { allFieldsAreValid } = useFormValidation({ inputRefs: [firstNameRef, lastNameRef, emailRef, passwordRef], inputValues : [firstName, lastName ,email, password] });
- const url = 'http://localhost:3000/api/signup';
+  const url = 'http://localhost:3000/api/signup';
 // request options
 const options = {
     method: 'POST',
@@ -44,4 +44,4 @@ const options = {
     allFieldsAreValid
   }
 }
-export default useInscription;
+export default useInscription ;

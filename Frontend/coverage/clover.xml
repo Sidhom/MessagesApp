@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1617195683584" clover="3.2.0">
-  <project timestamp="1617195683584" name="All files">
+<coverage generated="1617265363274" clover="3.2.0">
+  <project timestamp="1617265363275" name="All files">
     <metrics statements="199" coveredstatements="67" conditionals="107" coveredconditionals="19" methods="57" coveredmethods="17" elements="363" coveredelements="103" complexity="0" loc="199" ncloc="199" packages="15" files="23" classes="23"/>
     <package name="app">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -211,37 +211,37 @@
       </file>
       <file name="useLogin.js" path="C:\Users\MSIDHOM\Desktop\MessagesApp\Frontend\src\hooks\useLogin.js">
         <metrics statements="22" coveredstatements="10" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="40" count="2" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
       </file>
       <file name="useLogout.js" path="C:\Users\MSIDHOM\Desktop\MessagesApp\Frontend\src\hooks\useLogout.js">
         <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="6" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
       </file>
       <file name="useMessagesList.js" path="C:\Users\MSIDHOM\Desktop\MessagesApp\Frontend\src\hooks\useMessagesList.js">
         <metrics statements="39" coveredstatements="1" conditionals="16" coveredconditionals="0" methods="12" coveredmethods="0"/>
