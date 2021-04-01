@@ -1,24 +1,16 @@
-import React from 'react'
-import { render } from '@testing-library/react'
-import { ThemeProvider } from 'my-ui-lib'
-import { TranslationProvider } from 'my-i18n-lib'
-import defaultStrings from 'i18n/en-x-default'
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
+import { render } from "@testing-library/react";
+export {fireEvent} from "@testing-library/react";
+import Routes from '../routes';
 
-const AllTheProviders = ({ children }) => {
-  return (
-    <ThemeProvider theme="light">
-      <TranslationProvider messages={defaultStrings}>
-        {children}
-      </TranslationProvider>
-    </ThemeProvider>
-  )
-}
+const customRender = (elements) => render(
+  <RecoilRoot>
+    <Router>
+    <Routes />
+      {elements}
+      </Router>
+    </RecoilRoot>);
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options })
-
-// re-export everything
-export * from '@testing-library/react'
-
-// override render method
-export { customRender as render }
+export {customRender as render};

@@ -14,7 +14,7 @@ const AuthMenu = () =>{
       setLoggedUser(JSON.parse(user));
   },[])
   return (
-          <div className={styles.container}>
+          <div className={styles.container} role='menuContainer'>
                {loggedUser  ? 
               <Link className={styles.link} onClick={() => logout()} to='/'>Logout</Link>
             :(

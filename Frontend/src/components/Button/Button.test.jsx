@@ -13,7 +13,6 @@ describe('Button component', () => {
 
   it('should display the button elemnt', () => {
     const button = screen.getByLabelText("generic-button")
-    console.log(button.children.HTMLCollection)
     // expect(button.children.type).toBe("button")
   })
   afterAll(cleanup)
