@@ -35,7 +35,7 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
                     ref={messageRef}
                     onKeyDown={event => {event.key === 'Enter'? sendMessage() : undefined }}
                     onChange={onChange}>Enter text here...</textarea>
-                <div className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
+                <div  data-testid="sendMessageButton" className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
                     <Button label={loading ? 'Loading...' : 'Send'} action={sendMessage} disabled={loading || !value || privateMsg && !values.searchedUser} />
                     <div className={style.toggleButton}>
                         <div className={style.public}>public</div>

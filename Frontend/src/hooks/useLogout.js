@@ -1,4 +1,3 @@
-import { RecoilRoot } from "recoil";
 import { useRecoilState } from "recoil";
 import { loggedInUser } from "../store/state";
 

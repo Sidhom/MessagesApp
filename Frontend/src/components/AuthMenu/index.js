@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import useLogout from '../../hooks/useLogout';
+import hooks from '../../hooks/';
 import { loggedInUser } from '../../store/state';
 import styles from './AuthMenu.css';
 
 
 const AuthMenu = () =>{
+  const {useLogout} = hooks;
   const { logout } = useLogout();
   const [loggedUser, setLoggedUser] = useRecoilState(loggedInUser);
   useEffect(() => {
@@ -16,11 +17,11 @@ const AuthMenu = () =>{
   return (
           <div className={styles.container} role='menuContainer'>
                {loggedUser  ? 
-              <Link className={styles.link} onClick={() => logout()} to='/'>Logout</Link>
+              <Link role="logoutLink" className={styles.link} onClick={() => logout()} to='/'>Logout</Link>
             :(
               <Fragment>
-                  <Link className={styles.link} to='/' >Sign in</Link>
-                  <Link className={styles.link} to='/Inscription'>Sign up</Link>
+                  <Link  role="signInLink" className={styles.link} to='/' >Sign in</Link>
+                  <Link role="signUpLink" className={styles.link} to='/Inscription'>Sign up</Link>
               </Fragment>
             )}
           </div>

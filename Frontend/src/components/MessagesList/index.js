@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { Fragment }  from "react";
 import style from './MessageList.css';
 
 const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUser }) => {

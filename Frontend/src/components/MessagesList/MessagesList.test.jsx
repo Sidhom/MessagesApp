@@ -16,12 +16,19 @@ describe('MessagesList component', () => {
         const useRecoilValue = jest.fn();
         const useRecoilValueSpy = jest.spyOn(recoil, 'useRecoilValue');
         useRecoilValueSpy.mockImplementation(() =>  useRecoilValue);
-      render(<MessagesList />)
+
+    })
+    beforeEach(()=> {
+      render(<MessagesList findUser={jest.fn()}privateMessages={["test"]} connectedUser={{firstName: "test"}} />)
     })
   
     it('should have the right messagesListContainer in the dom', () => {
   
       expect(screen.getByRole('messagesListContainer')).toBeInTheDocument()
+    })
+    it('should have privateMessages in the dom', () => {
+  
+      expect(screen.getByTestId('privateMessages')).toBeInTheDocument()
     })
     
    
