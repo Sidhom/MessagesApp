@@ -8,8 +8,7 @@ const useMessagesList = ({  }) => {
   const [publicMessages, setPublicMessages] = useState([]);
   const [privateMessages, setPrivateMessages]= useState([]);
   const [users, setUsers] = useState(false);
- // const connectedUser = useRecoilValue(loggedInUser);
- const connectedUser = ""
+ const connectedUser = useRecoilValue(loggedInUser);
  const url = 'http://localhost:3000/api/find-messages';
  const usersUrl = 'http://localhost:3000/api/find-users';
 // request options
@@ -39,10 +38,10 @@ const options = {
     response.json()).then(response => {
         setLoading(false);
         if(response.success) {
-          //  setUsers(response.users);
+          setUsers(response.users);
           setError(null);
         } else {
-          //  setUsers([]);
+           setUsers([]);
           setError(response.msg);
         }
     });
