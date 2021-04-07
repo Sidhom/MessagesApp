@@ -54,9 +54,5 @@ describe('Login component', () => {
       loginButton.click();
       expect(login.mock.calls.length).toEqual(0);
     });
-
-
-   
-  
     afterAll(cleanup)
   })

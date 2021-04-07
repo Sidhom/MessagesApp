@@ -42,6 +42,7 @@ describe('AuthMenu component', () => {
       expect(screen.getByRole('menuContainer')).toBeInTheDocument()
     })
     it('should call the login function when clicking on the login button', () => {
+      
       const email = screen.getAllByTestId('generic-input')[0];
       const password = screen.getAllByTestId('generic-input')[1];
       fireEvent.change(email, { target: { value: 'test@gmail.com' } });

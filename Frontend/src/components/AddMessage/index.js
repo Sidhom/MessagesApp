@@ -29,17 +29,18 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
         privateMessages});
     return (
         <form>
-           <textarea name="message" value={value}
+           <textarea name="message"
+                     value={value}
                      role="addMessageContainer"
                     className={style.messageContainer}
                     ref={messageRef}
                     onKeyDown={event => {event.key === 'Enter'? sendMessage() : undefined }}
                     onChange={onChange}>Enter text here...</textarea>
-                <div  data-testid="sendMessageButton" className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
+                    <div  data-testid="sendMessageButton" className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
                     <Button label={loading ? 'Loading...' : 'Send'} action={sendMessage} disabled={loading || !value || privateMsg && !values.searchedUser} />
                     <div className={style.toggleButton}>
                         <div className={style.public}>public</div>
-                        <ToggleButton value={privateMsg} onChange={() => { privateMsg &&  values.setSearchedUser(null);
+                        <ToggleButton  data-testid="toggleButton" value={privateMsg} onChange={() => { privateMsg &&  values.setSearchedUser(null);
                         setPrivateMsg(!privateMsg);
                         }}  />
                         <div className={style.private}>private</div>

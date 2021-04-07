@@ -15,8 +15,8 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                     const sender = findUser(message) && findUser(message);
                 return (
                  Boolean( sender && sender._id === connectedUserId) ? (
-                <div  className={`${style.youMessageContainer}` } key={message._id}>
-                    <span className={style.you}>
+                <div  data-testid="yourMessages"  className={`${style.youMessageContainer}`  } key={message._id}>
+                    <span className={style.you}  data-testid="you">
                         YOU :
                     </span> 
                     <span className={style.yourMessage}> 
@@ -25,9 +25,9 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                
                 </div>
                     ) : 
-                    <div  className={`${style.messageContainer}` } key={message._id}>
+                    <div data-testid="otherMessages"  className={`${style.messageContainer}`  } key={message._id}>
                  
-                    <span className={style.sender}>
+                    <span data-testid="senderName" className={style.sender}>
                         {sender && sender.firstName} :    
                     </span> 
                     <span className={style.message}> 
