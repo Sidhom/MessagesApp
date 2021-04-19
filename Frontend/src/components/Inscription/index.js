@@ -19,7 +19,7 @@ const Inscription = () => {
 
   return (
     <div className={styles.container} data-testid="inscriptionContainer">
-      <h1 className={styles.title}>Sign up to Leboncoin messanger</h1>
+      <h1 className={styles.title}>Sign up to Keep IT</h1>
       <div className={styles.inputContainer}>
        <div className={styles.label}> FirstName  </div>
        <div className={styles.input} >

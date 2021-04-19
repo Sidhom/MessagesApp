@@ -14,7 +14,8 @@ const Login = () => {
 
   return (
     <div className={styles.container} data-testid="loginContainer">
-      <h1 className={styles.title}>Sign in to Leboncoin messanger</h1>
+      <h1 className={styles.title}>Sign in to  Keep IT
+      </h1>
       <div className={styles.inputContainer}>
        <div className={`${styles.email} ${styles.label}`}> Email  </div>
        <div className={styles.input} data-testid="email" >

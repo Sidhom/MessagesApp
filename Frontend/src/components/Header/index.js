@@ -5,7 +5,7 @@ import styles from './Header.css';
 const Header = () => (
     <header className={styles.header} >
         <div className={styles.headerContainer} >
-        <h3 className={styles.title} data-testid="title" > Leboncoin messanger </h3>
+        <h3 className={styles.title} data-testid="title" > Keep IT </h3>
         <div className={styles.container}>
         <AuthMenu />
         </div>
