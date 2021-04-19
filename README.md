@@ -1,4 +1,4 @@
-# MessagesApp
+# Keep IT (Keep In Touch)
 #technical aspect:
 1) Install Mongodb locally
 2)git clone project 
