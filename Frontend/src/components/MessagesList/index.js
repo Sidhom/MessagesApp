@@ -1,4 +1,5 @@
-import React, { Fragment }  from "react";
+import React from "react";
+import { Link } from 'react-router-dom';
 import style from './MessageList.css';
 
 const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUser }) => {
@@ -8,36 +9,6 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
     
     return (
         <div className={style.globalContainer} role="messagesListContainer">
-            <div>
-            <h2 data-testid="privateMessages">Private Messages</h2>
-            <div className={style.publicContainer}>
-            {privateMessages && privateMessages.map((message) =>{ 
-                    const sender = findUser(message) && findUser(message);
-                return (
-                 Boolean( sender && sender._id === connectedUserId) ? (
-                <div  data-testid="yourMessages"  className={`${style.youMessageContainer}`  } key={message._id}>
-                    <span className={style.you}  data-testid="you">
-                        YOU :
-                    </span> 
-                    <span className={style.yourMessage}> 
-                        {message.message} 
-                    </span>
-               
-                </div>
-                    ) : 
-                    <div data-testid="otherMessages"  className={`${style.messageContainer}`  } key={message._id}>
-                 
-                    <span data-testid="senderName" className={style.sender}>
-                        {sender && sender.firstName} :    
-                    </span> 
-                    <span className={style.message}> 
-                        {message.message} 
-                    </span>
-                </div>
-                )
-                })}
-                    </div>
-                </div>
             <div>
             <h2>Public Messages</h2>
             <div className={style.privateContainer}>
@@ -58,7 +29,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                             <div  className={`${style.messageContainer}` } key={message._id}>
                          
                             <span className={style.sender}>
-                                {sender && sender.firstName} :    
+                                {sender && <Link to={`/privateMessage/${sender.firstName}`}>{sender.firstName}</Link>} :    
                             </span> 
                             <span className={style.message}> 
                                 {message.message} 

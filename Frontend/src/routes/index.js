@@ -5,6 +5,7 @@ import Inscription from '../components/Inscription';
 import Login from '../components/Login';
 import DiscussionForum from '../components/DiscussionForum';
 import { userState } from '../store/selectors';
+import PrivateMessages from '../components/PrivateMessages';
 
 const Routes = () => {
     const connectedUser = useRecoilValue(userState);
@@ -14,6 +15,7 @@ const Routes = () => {
                {!connectedUser &&  <Route path="/Inscription" component={Inscription} />}
                 {!connectedUser && <Route path="/" component={Login} />}
                 {connectedUser &&  <Route path="/" component={DiscussionForum} />}
+                {connectedUser && <Route path="/privateMessage/:destinationName" component={PrivateMessages} />}
             </Switch>
     )
 }

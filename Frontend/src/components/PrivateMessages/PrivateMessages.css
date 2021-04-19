@@ -1,0 +1,55 @@
+.message {
+    grid-area: message;
+    text-align: start;
+    padding-left: 1rem;
+    overflow-wrap: break-word;
+}
+.sender {
+    grid-area: sender;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-end;
+}
+.privateContainer,
+.publicContainer  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 160px;
+}
+.messageContainer {
+    display: grid;
+    width: auto;
+    grid-auto-columns: 7rem;
+    grid-template:  "sender message message message" 
+                    "sender message message message" 26px;
+}
+.globalContainer {
+    display: grid;
+    width: 100%;
+    grid-template: "privateContainer publicContainer"; 
+}
+.othersMessage {
+    padding-left: 200px;
+}
+.youMessageContainer {
+    display: grid;
+    width: auto;
+    grid-auto-columns: 7rem;
+    grid-template:  "you yourMessage  yourMessage" 
+                    "you yourMessage  yourMessage" 26px;
+}
+.yourMessage {
+    grid-area: yourMessage;
+    text-align: start;
+    padding-left: 1rem;
+    overflow-wrap: break-word;
+}
+.you {
+    grid-area: you;
+    font-weight: 600;
+    display: flex;
+    justify-content: flex-end;
+   
+}

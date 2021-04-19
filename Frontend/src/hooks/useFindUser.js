@@ -9,7 +9,7 @@ const useFindUser = (users) => {
   }
   useEffect(()=> {
     if(!user) setSearchedUser('');
-    const searchedUser = user  && users.find(us =>Boolean(us.firstName.toLowerCase() === user.toLowerCase()));
+    const searchedUser = user && users  && users.find(us =>Boolean(us.firstName.toLowerCase() === user.toLowerCase()));
    setUser(searchedUser && searchedUser.firstName);
    setSearchedUser(searchedUser);
   },[user])
