@@ -27,7 +27,7 @@ const sendMessage = () => {
           if(response.success) {
             setvalue('');
            if(Boolean(destinationId)) {setPrivateMessages([...privateMessages, response.message]);}
-          if(Boolean(!destinationId))  setPublicMessages([...publicMessages, response.message]);
+         else setPublicMessages([...publicMessages, response.message]);
             setError(null);
           } else {
             setError(response.msg);

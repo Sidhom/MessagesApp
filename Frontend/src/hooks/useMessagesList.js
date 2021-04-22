@@ -24,7 +24,6 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            console.log('messages', messages)
             setPublicMessages(messages && messages.filter(message => message.destinationId === "undefined" || message.destinationId === ''));
             setError(null);
           } else {
@@ -52,6 +51,7 @@ return users && users.find(user => user._id === message.senderId);
 }
 useEffect(()=> {
   getUsers();
+  getMessages();
 },[])
 useEffect(()=> {
   const interval = setInterval(() => {

@@ -51,7 +51,7 @@ const options = {
     }
 useEffect(()=> {
   getUsers();
-
+  getPrivateMessages();
 },[])
 useEffect(()=> {
   const interval = setInterval(() => {

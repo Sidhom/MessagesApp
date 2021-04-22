@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import MessageList from "../MessagesList"
 import AddMessage from "../AddMessage";
 import useMessagesList from "../../hooks/useMessagesList";
@@ -8,9 +8,6 @@ import usePrivateMessagesList from "../../hooks/usePrivateMessagesList";
 const DiscussionForum = () => {
     const  messagesListProps = useMessagesList();
     const {setIsNewMessageSent} = usePrivateMessagesList();
-    useEffect(()=> {
-console.log('render')
-    },[messagesListProps && messagesListProps.publicMessages])
     return (
         <div className={style.container} data-testid="discussionForumContainer">
             <div className={style.messagesList}>
