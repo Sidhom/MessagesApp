@@ -3,7 +3,10 @@ import style from './PrivateMessages.css';
 import usePrivateMessagesList from '../../hooks/usePrivateMessagesList';
 
 const PrivateMessages = () => {
-    const {error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList();
+
+    
+const {findUser, connectedUser, error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList();
+const connectedUserId= connectedUser && connectedUser._id;
     return (
         <div>
             <h2 data-testid="privateMessages">Private Messages</h2>

@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import style from './MessageList.css';
 
-const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUser }) => {
-
-
+const MessagesList = ({ findUser , publicMessages, connectedUser }) => {
+    let history = useHistory();
     const connectedUserId= connectedUser && connectedUser._id;
+    const handleClick = (firstName)=>{
+        history.push(`/privateMessage/${firstName}`);
+      }
     
     return (
         <div className={style.globalContainer} role="messagesListContainer">
@@ -29,7 +31,7 @@ const MessagesList = ({ findUser , publicMessages, privateMessages, connectedUse
                             <div  className={`${style.messageContainer}` } key={message._id}>
                          
                             <span className={style.sender}>
-                                {sender && <Link to={`/privateMessage/${sender.firstName}`}>{sender.firstName}</Link>} :    
+                                {sender && <div onClick={() =>handleClick(sender.firstName)}>{sender.firstName}</div>} :    
                             </span> 
                             <span className={style.message}> 
                                 {message.message} 

@@ -13,8 +13,8 @@ const Routes = () => {
      
             <Switch>
                {!connectedUser &&  <Route path="/Inscription" component={Inscription} />}
-                {!connectedUser && <Route path="/" component={Login} />}
-                {connectedUser &&  <Route path="/" component={DiscussionForum} />}
+                {!connectedUser && <Route exact path="/" component={Login} />}
+                {connectedUser &&  <Route exact path="/" component={DiscussionForum} />}
                 {connectedUser && <Route path="/privateMessage/:destinationName" component={PrivateMessages} />}
             </Switch>
     )
