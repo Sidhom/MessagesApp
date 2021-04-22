@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { loggedInUser } from '../store/state';
 
-const useMessagesList = ({  }) => {
+const useMessagesList = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [publicMessages, setPublicMessages] = useState([]);
   const [users, setUsers] = useState(false);
  const connectedUser = useRecoilValue(loggedInUser);
+ const [time, setTime]= useState({});
+ let interval = setInterval(() => setTime({ time: Date.now() }), 10000);
  const url = 'http://localhost:3000/api/find-messages';
  const usersUrl = 'http://localhost:3000/api/find-users';
 // request options
@@ -50,7 +52,13 @@ return users && users.find(user => user._id === message.senderId);
 }
 useEffect(()=> {
   getUsers();
-  getMessages();
+},[])
+useEffect(()=> {
+  const interval = setInterval(() => {
+    getMessages();
+  }, 2000);
+  return () => clearInterval(interval);
+
 },[])
 
   return {

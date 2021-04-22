@@ -51,8 +51,15 @@ const options = {
     }
 useEffect(()=> {
   getUsers();
-  getPrivateMessages();
-},[isNewMessageSent])
+
+},[])
+useEffect(()=> {
+  const interval = setInterval(() => {
+    getPrivateMessages();
+  }, 1000);
+  return () => clearInterval(interval);
+},[])
+
 
   return {
     findUser,
