@@ -22,7 +22,7 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.senderId || destinationId === message.destinationId || message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.destinationId )))
+            setPrivateMessages(messages && messages.filter(message => (connectedUser._id === message.senderId && destinationId === message.destinationId || (connectedUser._id === message.destinationId ))))
             setError(null);
           } else {
             setPrivateMessages([]);
