@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { loggedInUser } from '../store/state';
 
-const usePrivateMessagesList = () => {
+const usePrivateMessagesList = (destinationId) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [privateMessages, setPrivateMessages]= useState([]);
@@ -22,7 +22,7 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.senderId || connectedUser._id === message.destinationId)))
+            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.senderId || destinationId === message.destinationId || message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.destinationId )))
             setError(null);
           } else {
             setPrivateMessages([]);

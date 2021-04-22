@@ -5,9 +5,12 @@ import style from './MessageList.css';
 const MessagesList = ({ findUser , publicMessages, connectedUser }) => {
     let history = useHistory();
     const connectedUserId= connectedUser && connectedUser._id;
-    const handleClick = (firstName)=>{
-        history.push(`/privateMessage/${firstName}`);
-      }
+    const visitePrivateMessages = (sender)=>{
+        history.push({
+        pathname: `/privateMessage/${sender.firstName}`,
+        state: { destinationId: sender._id }
+      })
+    }
     
     return (
         <div className={style.globalContainer} role="messagesListContainer">
@@ -31,7 +34,7 @@ const MessagesList = ({ findUser , publicMessages, connectedUser }) => {
                             <div  className={`${style.messageContainer}` } key={message._id}>
                          
                             <span className={style.sender}>
-                                {sender && <div onClick={() =>handleClick(sender.firstName)}>{sender.firstName}</div>} :    
+                                {sender && <div onClick={() =>visitePrivateMessages(sender)}>{sender.firstName}</div>} :    
                             </span> 
                             <span className={style.message}> 
                                 {message.message} 

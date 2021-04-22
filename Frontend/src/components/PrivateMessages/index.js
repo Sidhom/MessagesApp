@@ -1,11 +1,13 @@
 import React  from 'react';
+import { useLocation } from "react-router-dom"
 import style from './PrivateMessages.css';
 import usePrivateMessagesList from '../../hooks/usePrivateMessagesList';
+import { checkPropTypes } from 'prop-types';
 
 const PrivateMessages = () => {
-
-    
-const {findUser, connectedUser, error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList();
+const location = useLocation();
+    console.log('location', location)
+const {findUser, connectedUser, error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList(location.state.destinationId);
 const connectedUserId= connectedUser && connectedUser._id;
     return (
         <div>
