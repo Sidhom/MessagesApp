@@ -10,7 +10,7 @@ import Input from "../Input";
 import useFindUser from "../../hooks/useFindUser";
 import GreenCheckMark from '../../public/greenCheckMark.png';
 
-const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, privateMessages, users}) => {
+const AddMessage = ({ publicView, destinationId,setPublicMessages, setPrivateMessages, publicMessages, privateMessages, users, setIsNewMessageSent}) => {
     const messageRef = useRef();
     const privacyRef = useRef();
     const {value, onChange, setvalue} = useFormInput('');
@@ -20,7 +20,7 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
         messageRef,  
         message: value, 
         privacyRef, 
-        destinationId: values && values.searchedUser && values.searchedUser._id, 
+        destinationId: values && values.searchedUser && values.searchedUser._id || destinationId, 
         senderId:connectedUser && connectedUser._id,
         setvalue, 
         setPublicMessages, 
@@ -34,11 +34,11 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
                      role="addMessageContainer"
                     className={style.messageContainer}
                     ref={messageRef}
-                    onKeyDown={event => {event.key === 'Enter'? sendMessage() : undefined }}
+                    onKeyDown={event => {event.key === 'Enter'? sendMessage() && setIsNewMessageSent(true) : undefined }}
                     onChange={onChange}>Enter text here...</textarea>
                     <div  data-testid="sendMessageButton" className={`${style.sendMessage} ${privateMsg ? style.spaceLeft : ''}`}>
                     <Button label={loading ? 'Loading...' : 'Send'} action={sendMessage} disabled={loading || !value || privateMsg && !values.searchedUser} />
-                    <div className={style.toggleButton}>
+                   {publicView && ( <div className={style.toggleButton}>
                         <div className={style.public}>public</div>
                         <ToggleButton  data-testid="toggleButton" value={privateMsg} onChange={() => { privateMsg &&  values.setSearchedUser(null);
                         setPrivateMsg(!privateMsg);
@@ -54,6 +54,7 @@ const AddMessage = ({setPublicMessages, setPrivateMessages, publicMessages, priv
                          </div>
                     )}
                     </div>
+                   )}
                 </div>  
         </form>
     );

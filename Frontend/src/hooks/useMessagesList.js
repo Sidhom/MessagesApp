@@ -6,7 +6,6 @@ const useMessagesList = ({  }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [publicMessages, setPublicMessages] = useState([]);
-  const [privateMessages, setPrivateMessages]= useState([]);
   const [users, setUsers] = useState(false);
  const connectedUser = useRecoilValue(loggedInUser);
  const url = 'http://localhost:3000/api/find-messages';
@@ -23,8 +22,8 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            setPublicMessages(messages && messages.filter(message => message.destinationId === 'null' || message.destinationId === ''));
-            setPrivateMessages(messages && messages.filter(message => (message.destinationId !== 'null' && message.destinationId !== '') && (connectedUser._id === message.senderId || connectedUser._id === message.destinationId)))
+            console.log('messages', messages)
+            setPublicMessages(messages && messages.filter(message => message.destinationId === "undefined" || message.destinationId === ''));
             setError(null);
           } else {
             setPublicMessages([]);
@@ -61,11 +60,9 @@ useEffect(()=> {
     users,
     error,
     publicMessages,
-    privateMessages,
     loading,
     connectedUser,
-    setPublicMessages,
-    setPrivateMessages
+    setPublicMessages
   }
 }
 export default useMessagesList;

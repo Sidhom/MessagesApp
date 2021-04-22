@@ -8,6 +8,7 @@ const usePrivateMessagesList = (destinationId) => {
   const [privateMessages, setPrivateMessages]= useState([]);
   const [users, setUsers] = useState(false);
  const connectedUser = useRecoilValue(loggedInUser);
+ const [isNewMessageSent, setIsNewMessageSent]= useState(false);
  const url = 'http://localhost:3000/api/find-messages';
  const usersUrl = 'http://localhost:3000/api/find-users';
 // request options
@@ -22,8 +23,9 @@ const options = {
           setLoading(false);
           if(response.success) {
             let messages = response.messages;
-            setPrivateMessages(messages && messages.filter(message => (connectedUser._id === message.senderId && destinationId === message.destinationId || (connectedUser._id === message.destinationId ))))
+            setPrivateMessages(messages && messages.filter(message => (connectedUser._id === message.senderId && destinationId === message.destinationId || (connectedUser._id === message.destinationId && connectedUser._id !== message.senderId ))))
             setError(null);
+            setIsNewMessageSent
           } else {
             setPrivateMessages([]);
             setError(response.msg);
@@ -50,11 +52,12 @@ const options = {
 useEffect(()=> {
   getUsers();
   getPrivateMessages();
-},[])
+},[isNewMessageSent])
 
   return {
     findUser,
     connectedUser,
+    setIsNewMessageSent,
     error,
     privateMessages,
     loading,

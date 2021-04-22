@@ -2,12 +2,11 @@ import React  from 'react';
 import { useLocation } from "react-router-dom"
 import style from './PrivateMessages.css';
 import usePrivateMessagesList from '../../hooks/usePrivateMessagesList';
-import { checkPropTypes } from 'prop-types';
+import AddMessage from '../AddMessage';
 
 const PrivateMessages = () => {
 const location = useLocation();
-    console.log('location', location)
-const {findUser, connectedUser, error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList(location.state.destinationId);
+const {findUser, connectedUser,setIsNewMessageSent, error, privateMessages, loading, setPrivateMessages} = usePrivateMessagesList(location.state.destinationId);
 const connectedUserId= connectedUser && connectedUser._id;
     return (
         <div>
@@ -38,6 +37,12 @@ const connectedUserId= connectedUser && connectedUser._id;
                 </div>
                 )
                 })}
+                 <AddMessage 
+                 publicView={false} 
+                 destinationId={location.state.destinationId}
+                 setPrivateMessages={setPrivateMessages}
+                 privateMessages={privateMessages}
+                      />
                     </div>
                 </div>
     )
